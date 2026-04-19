@@ -34,4 +34,28 @@ void main() {
       expect(rect.height, closeTo(0.40, 0.001));
     },
   );
+
+  test('assignFaceSelection updates only the requested face slot', () {
+    final rect = normalizeSelectionRect(
+      imageWidth: 300,
+      imageHeight: 210,
+      left: 30,
+      top: 21,
+      width: 90,
+      height: 84,
+    );
+
+    final updated = assignFaceSelection(
+      defaultFaceSelectionMap(),
+      'front',
+      rect,
+    );
+
+    expect(updated['front'], isNotNull);
+    expect(updated['back'], isNull);
+    expect(updated['left'], isNull);
+    expect(updated['right'], isNull);
+    expect(updated['top'], isNull);
+    expect(updated['bottom'], isNull);
+  });
 }
