@@ -1,1 +1,15 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:integration_test/integration_test.dart';
+import 'package:prism_face_selector/adapter/prism_face_selector_page.dart';
 
+void main() {
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+
+  testWidgets('renders the selector page title', (tester) async {
+    await tester.pumpWidget(const MaterialApp(home: PrismFaceSelectorPage()));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Prism Face Selector'), findsOneWidget);
+  });
+}
